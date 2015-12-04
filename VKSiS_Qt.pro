@@ -12,5 +12,6 @@ SOURCES += main.cpp \
     PCX.cpp
 
 HEADERS += \
-    pcx.h
+    pcx.h \
+    ImgUtils.hpp
 

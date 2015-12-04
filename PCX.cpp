@@ -30,7 +30,7 @@ BYTE *PCX::Raw()
 
 void PCX::WriteRaw(BYTE *sourceS, BYTE *sourceE)
 {
-    std::copy(sourceS, sourceE, pixels);
+       std::copy(sourceS, sourceE, pixels);
 }
 
 void PCX::Load(std::string fileName)
@@ -92,7 +92,7 @@ void PCX::Load(std::string fileName)
 
 void PCX::Save(std::string fileName)
 {
-    std::ofstream img(fileName, std::ios::binary);
+    std::ofstream img(fileName, std::ios_base::binary);
     if (!img)
         throw std::ofstream::failure("Can't open image : " + fileName);
     img.write((char*)header, sizeof (PCXHEADER));

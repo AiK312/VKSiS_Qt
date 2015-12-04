@@ -1,7 +1,9 @@
 #include <QCoreApplication>
 #include <QTime>
 #include <iostream>
+#include <conio.h>
 #include "pcx.h"
+#include "ImgUtils.hpp"
 
 /*inline void PrintElapsed(std::string text, ClockPoint start, ClockPoint end)
 {
@@ -15,14 +17,22 @@ int main(int argc, char *argv[])
     std::cout << "Linear pcx-image processing program" << std::endl;
     QTime timer;
     timer.start();
-    PCX* image = new PCX("D:\\1.pcx");
-    std::cout << "Open file: " << timer.elapsed() << "ms";    
+    PCX* image = new PCX("D:\\Enlight.pcx");
+    std::cout << "Open file: " << timer.elapsed() << "ms" << std::endl;
     int imageSize = image->Height() * image->Width();
     auto newPixels = new unsigned char[imageSize];
     timer.start();
+    std::cout << imageSize << std::endl;
+    //ImgUtils::MedianFilter(image->Raw(), newPixels, image->Height(), image->Width());
+    //ImgUtils::Rotate180(newPixels, imageSize);
+    //image->WriteRaw(newPixels, newPixels + imageSize);
+    //ImgUtils::Diff_Oper_III(newPixels, image->Height(), image->Width());
+    ImgUtils::AddNoise(newPixels, image->Height(), image->Width(), 2.5);
 
+    image->Save("D:\\NewEnlight.pcx");
+    std::cout << "Program time: " << begin.elapsed() << " ms" << std::endl;
 
-    
+    delete[] newPixels;
     return 0;
 }
 

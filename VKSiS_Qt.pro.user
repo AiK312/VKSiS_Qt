@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 3.5.1, 2015-12-03T07:00:35. -->
+<!-- Written by QtCreator 3.4.2, 2015-12-04T08:24:19. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
-  <value type="QByteArray">{d2c86adb-5334-4df6-8a53-359ad00ab100}</value>
+  <value type="QByteArray">{8168c4b3-a274-426a-a029-1c089e37b57e}</value>
  </data>
  <data>
   <variable>ProjectExplorer.Project.ActiveTarget</variable>
@@ -58,8 +58,8 @@
  <data>
   <variable>ProjectExplorer.Project.Target.0</variable>
   <valuemap type="QVariantMap">
-   <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Desktop Qt 5.5.1 MinGW 32bit</value>
-   <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Desktop Qt 5.5.1 MinGW 32bit</value>
+   <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Desktop Qt 5.5.0 MinGW 32bit</value>
+   <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Desktop Qt 5.5.0 MinGW 32bit</value>
    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">qt.55.win32_mingw492_kit</value>
    <value type="int" key="ProjectExplorer.Target.ActiveBuildConfiguration">0</value>
    <value type="int" key="ProjectExplorer.Target.ActiveDeployConfiguration">0</value>
@@ -227,8 +227,8 @@
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">VKSiS_Qt</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:C:/Qt/Projects/VKSiS_Qt/VKSiS_Qt.pro</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">VKSiS_Qt2</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:E:/Qt/Projects/VKSiS_Qt/VKSiS_Qt.pro</value>
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.CommandLineArguments"></value>
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.ProFile">VKSiS_Qt.pro</value>
     <value type="bool" key="Qt4ProjectManager.Qt4RunConfiguration.UseDyldImageSuffix">false</value>
