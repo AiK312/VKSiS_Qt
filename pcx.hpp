@@ -44,7 +44,7 @@ private:
 	int width = 0;
 	int height = 0;
     int sizePallete;
-    BYTE* pallete[];
+    BYTE* pallete;
 
 
 
@@ -80,7 +80,7 @@ PCX::~PCX()
 
 void PCX::Load(std::string fileName)
 {
-	std::ifstream img(fileName, std::ios::binary);
+    std::ifstream img(fileName, std::ios_base::binary);
 	if (!img)
 		throw std::ifstream::failure("Can't open image : " + fileName);
 
@@ -127,9 +127,12 @@ void PCX::Load(std::string fileName)
 	Decode(source);
 	delete[] source;
 
-    sizePallete = fileSize - img.tellg();
-    pallete = new BYTE[sizePallete];
-    //auto pallete_vec = new std::vector<BYTE>(fileSize-img.tellg());
+
+    img.seekg(9852856, std::ios_base::beg);
+    int n = img.tellg();
+
+    sizePallete = abs(fileSize - n);
+    pallete = new BYTE[sizePallete];    
     img.read((char*)pallete, sizePallete);
 }
 
@@ -144,6 +147,8 @@ void PCX::Save(std::string fileName)
 
     img.write((char*)header, sizeof (PCXHEADER));
 	Encode(&img);
+
+    img.seekp(9852856, std::ios_base::beg);
     img.write((char*)pallete, sizePallete);
 
 }

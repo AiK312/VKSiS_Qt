@@ -35,21 +35,9 @@ private:
         std::sort(window, window + 9);
     }
 
-public:
+public:   
 
-    static void AddNoise(unsigned char* original, int heigth, int width, float p)
-    {
-        srand(time(NULL));
-        int amount = heigth * width * p, x, y;
-        for (int i = 0; i < amount; ++i)
-        {
-            y = rand() % heigth;
-            x = rand() % width;
-            original[y * width + x] = (i % 2) ? 255 : 0 ;
-        }
-    }
-
-    /*static void MedianFilter(unsigned char* original, unsigned char* processed, int heigth, int width)
+    static void MedianFilter(unsigned char* original, unsigned char* processed, int heigth, int width)
     {
         auto window = new unsigned char[9];
         int Hig = heigth - 1, Wid = width - 1;
@@ -61,11 +49,23 @@ public:
                 processed[i * width + j] = window[4];
             }
         delete[] window;
-    }*/
+    }
 
     static void Rotate180(unsigned char* original, int size)
     {
         std::reverse(original, original + size);
+    }
+
+    static void AddNoise(unsigned char* original, int heigth, int width, float p)
+    {
+        srand(time(NULL));
+        int amount = heigth * width * p, x, y;
+        for (int i = 0; i < amount; ++i)
+        {
+            y = rand() % heigth;
+            x = rand() % width;
+            original[y * width + x] = (i % 2) ? 255 : 0 ;
+        }
     }
 
     static void Diff_Oper_III(unsigned char* original, int heigth, int width)
