@@ -17,18 +17,28 @@ int main(int argc, char *argv[])
     std::cout << "Linear pcx-image processing program" << std::endl;
     QTime timer;
     timer.start();
-    PCX* image = new PCX("D:\\Image\\NoiseInp.pcx");
+    PCX* image = new PCX("D:\\Image\\WowSoNice.pcx");
     std::cout << "Open file: " << timer.elapsed() << "ms" << std::endl;
     int imageSize = image->Height() * image->Width();
     auto newPixels = new unsigned char[imageSize];
 
+    /*timer.start();
+    ImgUtils::AddNoise(newPixels, image->Height(), image->Width(), 0.1);
+    std::cout << "Noise time: " << timer.elapsed() << " ms" << std::endl;*/
 
+    /*timer.start();
+    ImgUtils::MedianFilter(image->Raw(), newPixels, image->Height(), image->Width());
+    std::cout << "Filter time: " << timer.elapsed() << " ms" << std::endl;*/
+
+    /*timer.start();
+    ImgUtils::Rotate180(newPixels, imageSize);
+    std::cout << "Rotate time: " << timer.elapsed() << " ms" << std::endl;*/
 
     timer.start();
-    ImgUtils::MedianFilter(image->Raw(), newPixels, image->Height(), image->Width());
-    std::cout << "Filter time: " << timer.elapsed() << " ms" << std::endl;
-    image->WriteRaw(newPixels, newPixels + imageSize);
+    ImgUtils::Diff_Oper_III(image->Raw(), newPixels, image->Height(), image->Width());
+    std::cout << "Diff Oper III time: " << timer.elapsed() << " ms" << std::endl;
 
+    image->WriteRaw(newPixels, newPixels + imageSize);
     timer.start();
     image->Save("D:\\Result.pcx");
     std::cout << "Save time: " << timer.elapsed() << " ms" << std::endl;

@@ -35,9 +35,15 @@ private:
         std::sort(window, window + 9);
     }
 
+    static inline void DiffFilterWindow(unsigned char* window)
+    {
+        window[4] = abs(window[0]+window[1]+window[2]-window[6]-window[7]-window[8]) +
+                    abs(window[0]+window[3]+window[6]-window[2]-window[5]-window[8]);
+    }
+
 public:   
 
-    static void MedianFilter(unsigned char* original, unsigned char* processed, int heigth, int width)
+   /* static void MedianFilter(unsigned char* original, unsigned char* processed, int heigth, int width)
     {
         auto window = new unsigned char[9];
         int Hig = heigth - 1, Wid = width - 1;
@@ -56,7 +62,7 @@ public:
         std::reverse(original, original + size);
     }
 
-    static void AddNoise(unsigned char* original, int heigth, int width, float p)
+    /*static void AddNoise(unsigned char* original, int heigth, int width, float p)
     {
         srand(time(NULL));
         int amount = heigth * width * p, x, y;
@@ -66,25 +72,22 @@ public:
             x = rand() % width;
             original[y * width + x] = (i % 2) ? 255 : 0 ;
         }
-    }
+    }*/
 
-    static void Diff_Oper_III(unsigned char* original, int heigth, int width)
+    static void Diff_Oper_III(unsigned char* original, unsigned char* processed, int heigth, int width)
     {
-        int hig = heigth - 1;
-        int wid = width - 1;
-        int x, y;
+        int hig = heigth - 1, wid = width - 1;
+        auto window = new unsigned char[9];
         for(int i=1; i<hig; i++)
         {
             for(int j=1; j<wid; j++)
             {
-                x = i*wid;
-                y = j;
-                original[i*wid+j] = abs(original[A]+original[B]+original[C]-
-                          original[G]-original[F]-original[E]) +
-                        abs(original[A]+original[H]+original[G]-
-                            original[C]-original[D]-original[E]);
+                LoadWindow(original, i, j, width, window);
+                DiffFilterWindow(window);
+                processed[i*width+j] = window[4];
 
             }
         }
+        delete[] window;
     }
 };
