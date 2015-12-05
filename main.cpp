@@ -2,7 +2,7 @@
 #include <QTime>
 #include <iostream>
 #include <conio.h>
-#include "pcx.h"
+#include "pcx.hpp"
 #include "ImgUtils.hpp"
 
 /*inline void PrintElapsed(std::string text, ClockPoint start, ClockPoint end)
@@ -17,19 +17,20 @@ int main(int argc, char *argv[])
     std::cout << "Linear pcx-image processing program" << std::endl;
     QTime timer;
     timer.start();
-    PCX* image = new PCX("D:\\Enlight.pcx");
+    PCX* image = new PCX("D:\\Image\\NoiseInp.pcx");
     std::cout << "Open file: " << timer.elapsed() << "ms" << std::endl;
     int imageSize = image->Height() * image->Width();
     auto newPixels = new unsigned char[imageSize];
+    std::copy(image->Raw(),image->Raw() + imageSize,newPixels);
     timer.start();
     std::cout << imageSize << std::endl;
-    //ImgUtils::MedianFilter(image->Raw(), newPixels, image->Height(), image->Width());
-    //ImgUtils::Rotate180(newPixels, imageSize);
-    //image->WriteRaw(newPixels, newPixels + imageSize);
-    //ImgUtils::Diff_Oper_III(newPixels, image->Height(), image->Width());
-    ImgUtils::AddNoise(newPixels, image->Height(), image->Width(), 2.5);
+    //auto z = image->Raw();
+    //delete[] z;
+    //z = newPixels;
 
-    image->Save("D:\\NewEnlight.pcx");
+    image->WriteRaw(newPixels,newPixels + imageSize);
+    image->Save("D:\\Result.pcx");
+
     std::cout << "Program time: " << begin.elapsed() << " ms" << std::endl;
 
     delete[] newPixels;

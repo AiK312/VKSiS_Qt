@@ -74,8 +74,8 @@ void PCX::Load(std::string fileName)
     height = header->Ymax - header->Ymin + 1;
     frameH = height + 2;
     frameW = width + 2;
-    header->PaletteInfo = 2;
-    pixels = new BYTE[height * width];
+    header->PaletteInfo = 1;
+    pixels = new BYTE[frameH * frameW];
 
     auto sourceSize = fileSize - sizeof(PCXHEADER);
     auto source = new BYTE[sourceSize];

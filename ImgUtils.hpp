@@ -49,7 +49,7 @@ public:
         }
     }
 
-    static void MedianFilter(unsigned char* original, unsigned char* processed, int heigth, int width)
+    /*static void MedianFilter(unsigned char* original, unsigned char* processed, int heigth, int width)
     {
         auto window = new unsigned char[9];
         int Hig = heigth - 1, Wid = width - 1;
@@ -61,7 +61,7 @@ public:
                 processed[i * width + j] = window[4];
             }
         delete[] window;
-    }
+    }*/
 
     static void Rotate180(unsigned char* original, int size)
     {

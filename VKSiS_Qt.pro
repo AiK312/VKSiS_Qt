@@ -8,10 +8,9 @@ CONFIG -= app_bundle
 
 TEMPLATE = app
 
-SOURCES += main.cpp \
-    PCX.cpp
+SOURCES += main.cpp
 
 HEADERS += \
-    pcx.h \
-    ImgUtils.hpp
+    ImgUtils.hpp \
+    pcx.hpp
 
